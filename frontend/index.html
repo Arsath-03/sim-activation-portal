@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIM Activation Portal</title>
+
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="min-h-screen bg-slate-100 text-slate-800">
+    <header
+      class="bg-gradient-to-r from-blue-700 to-indigo-700 text-white shadow-lg"
+    >
+      <div class="mx-auto max-w-6xl px-5 py-7">
+        <h1 class="text-3xl font-bold">SIM Activation Portal</h1>
+        <p class="mt-2 text-blue-100">
+          Validate your SIM, verify customer details, and explore offers.
+        </p>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl space-y-8 px-5 py-8">
+      <!-- SIM validation -->
+      <section class="panel">
+        <h2 class="section-title">SIM Validation</h2>
+        <p class="section-description">
+          Check whether a SIM is available for activation.
+        </p>
+
+        <form id="simForm" class="form-layout">
+          <input
+            id="simNumber"
+            type="text"
+            placeholder="Example: SIM-TEST-001"
+            class="field"
+            required
+          />
+          <button class="primary-button" type="submit">Check SIM</button>
+        </form>
+
+        <p id="simResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <!-- Customer validation -->
+      <section class="panel">
+        <h2 class="section-title">Customer Validation</h2>
+        <p class="section-description">
+          Verify a customer using their registered email and date of birth.
+        </p>
+
+        <form id="customerForm" class="form-layout">
+          <input
+            id="customerEmail"
+            type="email"
+            placeholder="Registered email"
+            class="field"
+            required
+          />
+
+          <input id="customerDob" type="date" class="field" required />
+
+          <button class="primary-button" type="submit">
+            Validate Customer
+          </button>
+        </form>
+
+        <p id="customerResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <!-- Validate customer using name and email -->
+      <section class="panel">
+        <h2 class="section-title">Validate Customer Details</h2>
+        <p class="section-description">
+          Verify the customer's first name, last name, and registered email.
+        </p>
+
+        <form id="nameValidationForm" class="form-layout">
+          <input
+            id="firstName"
+            class="field"
+            placeholder="First name"
+            required
+          />
+
+          <input id="lastName" class="field" placeholder="Last name" required />
+
+          <input
+            id="validationEmail"
+            type="email"
+            class="field"
+            placeholder="Registered email"
+            required
+          />
+
+          <button class="primary-button" type="submit">Validate Details</button>
+        </form>
+
+        <p id="nameValidationResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <!-- Update customer address -->
+      <section class="panel">
+        <h2 class="section-title">Update Address</h2>
+        <p class="section-description">
+          Update the address of an existing customer.
+        </p>
+
+        <form id="addressForm" class="form-layout">
+          <input
+            id="addressCustomerId"
+            type="number"
+            min="1"
+            class="field"
+            placeholder="Customer ID"
+            required
+          />
+
+          <input
+            id="newAddress"
+            class="field"
+            placeholder="Enter new address"
+            required
+          />
+
+          <button class="primary-button" type="submit">Update Address</button>
+        </form>
+
+        <p id="addressResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <!-- Validate ID proof -->
+      <section class="panel">
+        <h2 class="section-title">ID Proof Validation</h2>
+        <p class="section-description">
+          Check whether the supplied ID proof details match a stored customer
+          record.
+        </p>
+
+        <form id="idProofForm" class="form-layout">
+          <select id="idProofType" class="field" required>
+            <option value="">Select ID proof type</option>
+            <option value="AADHAAR">Aadhaar</option>
+            <option value="PASSPORT">Passport</option>
+            <option value="DRIVING_LICENSE">Driving Licence</option>
+            <option value="VOTER_ID">Voter ID</option>
+          </select>
+
+          <input
+            id="idProofNumber"
+            class="field"
+            placeholder="Test ID proof number"
+            required
+          />
+
+          <button class="primary-button" type="submit">
+            Validate ID Proof
+          </button>
+        </form>
+
+        <p id="idProofResult" class="result" aria-live="polite"></p>
+      </section>
+
+      <!-- Special offers -->
+      <section class="panel">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 class="section-title">Special Offers</h2>
+            <p class="section-description">
+              Offers loaded from your Spring Boot API.
+            </p>
+          </div>
+
+          <button id="refreshOffers" class="secondary-button" type="button">
+            Refresh Offers
+          </button>
+        </div>
+
+        <div
+          id="offersContainer"
+          class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <p>Loading offers...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="mt-8 bg-slate-900 px-5 py-5 text-center text-sm text-slate-300"
+    >
+      SIM Activation Portal | Spring Boot REST API Project
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
