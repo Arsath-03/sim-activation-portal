@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:8080/api";
+const API_BASE_URL = "https://sim-activation-portal-3vdh.onrender.com/api";
 
 // Display a result message on the page.
 function showResult(elementId, message, success) {
